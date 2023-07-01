@@ -1,0 +1,49 @@
+
+<div>
+  <script type="module" src="/js/products.js"></script>
+
+  <h1>List of Productos</h1>
+
+<h2>Welcome {{user.firstName}}, {{user.lastName}}, {{user.email}}, Your role is: {{user.rol}}</h2>
+
+</h2>
+  <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="dinamic-product-list">
+            {{#each p}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.price}}</td>
+                <td>
+                <button class="btn-add" type="button" value="{{this.id}}">Agregar al carrito</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <hr />
+    <hr />
+
+    {{prevPage}}
+    {{#if hasPrevPage}}
+      <a href="{{prevLink}}">⬅️</a>
+    {{/if}}
+    {{page}}
+    {{#if hasNextPage}}
+      <a href="{{nextLink}}">➡️</a>
+    {{/if}}
+    {{nextPage}}
+  </div>
+  <a href='/logout'>LOGOUT</a>
+</div>
+
+

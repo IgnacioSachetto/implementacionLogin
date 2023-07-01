@@ -1,0 +1,85 @@
+<div class="realtimeproducts-container">
+  <form id="form-products">
+    <div class="newProduct">
+      <div class="input-form">
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" placeholder="Título" required/>
+      </div>
+      <div class="input-form">
+        <label for="price">Price:</label>
+        <input id="price" type="number" name="price" placeholder="Precio" required/>
+      </div>
+      <div class="input-form">
+        <label for="description">Description:</label>
+        <input id="description" type="text" name="description" placeholder="Descripción" required/>
+      </div>
+      <div class="input-form">
+        <label for="thumbnails">Thumbnails:</label>
+        <input id="thumbnails" type="text" name="thumbnails" placeholder="Thumbnail"/>
+      </div>
+      <div class="input-form">
+        <label for="code">Code:</label>
+        <input id="code" type="text" name="code" placeholder="Código" required/>
+      </div>
+      <div class="input-form">
+        <label for="stock">Stock:</label>
+        <input id="stock" type="number" name="stock" placeholder="Stock" required/>
+      </div>
+      <div class="input-form">
+        <label for="category">Category:</label>
+        <input id="category" type="text" name="category" placeholder="Categoría" required/>
+      </div>
+      <div class="input-form">
+        <label for="status">Status:</label>
+        <input id="status" type="checkbox" name="status"/>
+      </div>
+      <input id="btn-form" type="submit" value="Crear Producto"/>
+    </div>
+  </form>
+
+  <div class="table-container">
+    <h1>All products</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Thumbnail</th>
+          <th>Code</th>
+          <th>Stock</th>
+          <th>Category</th>
+          <th>State</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="dynamic-product-list">
+        {{#each allProducts}}
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.price}}</td>
+          <td>[
+            {{#each this.thumbnails}}
+              <label>{{this}}</label>
+            {{/each}}
+          ]</td>
+          <td>{{this.code}}</td>
+          <td>{{this.stock}}</td>
+          <td>{{this.category}}</td>
+          <td>{{this.status}}</td>
+          <td>
+            <button type="button" class="btn-delete" value="{{this.id}}">Delete</button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/realTimeProducts.js"></script>

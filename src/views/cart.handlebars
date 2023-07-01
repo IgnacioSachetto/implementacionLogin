@@ -1,0 +1,27 @@
+<div>
+  <h1>All Products in Cart Number: {{cid}}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody id="dinamic-product-list">
+      {{#if p.length}}
+      {{#each p}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.price}}</td>
+      </tr>
+      {{/each}}
+      {{else}}
+      <tr>
+        <td colspan="4">No products in Cart. Please add one.</td>
+      </tr>
+      {{/if}}
+    </tbody>
+  </table>
+</div>
